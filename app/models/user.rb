@@ -5,5 +5,5 @@ class User < ApplicationRecord
     has_many :brew_comments, through: :brews, source: comments
 
     validates :email, presence: true
-    validates :user_name, presence: true, uniqueness: true 
+    validates :username, presence: true, uniqueness: true 
 end
