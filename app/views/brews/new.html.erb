@@ -1,0 +1,30 @@
+<h1>Brew coffee</h1>
+
+<%= form_for(@brew) do |f| %>
+    <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    </div>
+    <div>
+    <%= f.label :brand %>
+    <%= f.text_field :brand %>
+    </div>
+    <div>
+    <%= f.label :grind_size %>
+    <%= f.number_field :grind_size %>
+    </div>
+    <div>
+    <%= f.label :dose %>
+    <%= f.number_field :dose %>
+    </div>
+    <div>
+    <%= f.label :extraction_time %>
+    <%= f.number_field :extraction_time %>
+    </div>
+    <div>
+    <%= f.label :extraction_volume %>
+    <%= f.number_field :extraction_volume%>
+    </div>
+    <%= f.submit "Add new brew"%>
+
+<% end %>
