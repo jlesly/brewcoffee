@@ -14,5 +14,9 @@ class BrewsController < ApplicationController
         end 
     end
 
-    
+    private
+
+    def brew_params
+        params.require(:brew).permit(:name, :brand, :grind_size, :dose, :extraction_volume, :extraction_time)
+    end 
 end
