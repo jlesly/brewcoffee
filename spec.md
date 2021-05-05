@@ -2,9 +2,22 @@
 
 • Your models must:
 
-- Include at least one has_many, at least one belongs_to, and at least two has_many :through relationships
+[X] Include at least one has_many, at least one belongs_to, and at least two has_many :through relationships
+    User
+    has_many :brews
+    has_many :comments
+    has_many :brew_comments, through: :brews, source: :comments
+    Brew
+    belongs_to :user 
+    has_many :commnets
+    has_many :users_commented, through: :comments, source: :user
 
-- Include a many-to-many relationship implemented with has_many :through associations. The join table must include a user-submittable attribute — that is to say, some attribute other than its foreign keys that can be submitted by the app's user
+    Comment
+    belongs_to :user
+    belongs_to :brew
+
+[X] Include a many-to-many relationship implemented with has_many :through associations. The join table must include a user-submittable attribute — that is to say, some attribute other than its foreign keys that can be submitted by the app's user
+    Attribute submitted by user-> comment content
 
 • Your models must include reasonable validations for the simple attributes. You don't need to add every possible validation or duplicates, such as presence and a minimum length, but the models should defend against invalid data.
 
