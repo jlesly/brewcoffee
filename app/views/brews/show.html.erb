@@ -1,0 +1,11 @@
+<h1><%= @brew.name %></h1>
+
+<%= link_to "Add a commnet", new_brew_comment_path(@brew) %>
+
+<h2>Comments:</h2>
+<% @brew.comments.each do |comment| %>
+    <ul>
+        <li> Username: <%= comment.user.user_name %> Comment:<%= comment.content %></li>
+    </ul>
+<% end %>
+
