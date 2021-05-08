@@ -11,10 +11,9 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to @user
         else
+            @error = @user.errors.full_messages.to_sentence
             render :new
-
         end
-
     end 
     
     def index
@@ -22,6 +21,7 @@ class UsersController < ApplicationController
     end 
 
     def show
+        redirect_if_not_logged_in
         @user = User.find_by_id(params[:id])
         redirect_to '/' if !@user
     end 
