@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
     def new
-        if params[:brew_id] && @brew = Brew.find_by_id[:brew_id])
+        if params[:brew_id] && @brew = Brew.find_by_id([:brew_id])
             @comment = @brew.comments.new
         else
             # add error code after adding error code in layout
