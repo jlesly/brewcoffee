@@ -1,6 +1,7 @@
 <h1>Comment</h1>
 
 <%= form_for(@comment) do |f| %>
+    <%= f.hidden_field :brew_id %>
     <div>
     <%= f.label :content, "Comment" %>
     <%= f.text_area :content %>
