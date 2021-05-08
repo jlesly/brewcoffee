@@ -28,9 +28,21 @@ class CommentsController < ApplicationController
     end
 
     def edit
+        @comment = Comment.find(params[:id])
     end 
 
-    def delete
+    def update
+    end
+
+    def destroy
+        @comment = current_user.comments.find(params[:id])
+        if @comment.destroy
+            flash[:success] = "Comment successfully deleted"
+            redirect_to brews_path
+        else
+            # add error code after adding error code in layout
+            render :edit
+        end
     end 
 
 
