@@ -1,4 +1,10 @@
 <h2>Your Comment</h2>
 
 <div>
-    <%= @comment.content %> 
+    Comment by: <%= @comment.user.user_name %>
+    Comment: <%= @comment.content %> 
+</div>
+
+<%= if @comment.user == current_user %>
+    <%= link_to "Edit Comment", edit_comment_path(@comment) %>
+<% end %>

@@ -1,0 +1,12 @@
+<%= render partial: 'layouts/errors', locals: {object: @comment}  %>
+
+<%= form_for(@comment) do |f| %>
+    <%= f.hidden_field :brew_id %>
+    <div>
+    <%= f.label :content, "Comment" %>
+    <%= f.text_area :content %>
+    </div>
+    <div>
+    <%= f.submit "Submit" %>
+    </div>
+<% end %>
