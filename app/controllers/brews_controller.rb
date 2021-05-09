@@ -17,7 +17,7 @@ class BrewsController < ApplicationController
     end
 
     def show
-        @brews = Brews.find_by_id(params[:id])
+        @brews = Brew.find_by_id(params[:id])
     end 
 
     def update 

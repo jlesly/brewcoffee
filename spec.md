@@ -19,7 +19,14 @@
 [X] Include a many-to-many relationship implemented with has_many :through associations. The join table must include a user-submittable attribute — that is to say, some attribute other than its foreign keys that can be submitted by the app's user
     Attribute submitted by user-> comment content
 
-• Your models must include reasonable validations for the simple attributes. You don't need to add every possible validation or duplicates, such as presence and a minimum length, but the models should defend against invalid data.
+[X] Your models must include reasonable validations for the simple attributes. You don't need to add every possible validation or duplicates, such as presence and a minimum length, but the models should defend against invalid data.
+    Brew
+        validates :name, :brand, :grind_size, :dose, :extraction_volume, :extraction_time, presence: true
+    User
+        validates :email, presence: true
+        validates :username, presence: true, uniqueness: true
+    Comment
+        validates :content, presence: true
 
 - You must include at least one class level ActiveRecord scope method. a. Your scope method must be chainable, meaning that you must use ActiveRecord Query methods within it (such as .where and .order) rather than native ruby methods (such as #find_all or #sort).
 
