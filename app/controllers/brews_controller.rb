@@ -1,4 +1,5 @@
 class BrewsController < ApplicationController
+    before_action :redirect_if_not_logged_in
 
     def new 
         @brew = Brew.new
@@ -26,7 +27,7 @@ class BrewsController < ApplicationController
         if @brews.update(brew_params)
             redirect_to brew_path(@brew)
         else
-           # add error 
+           @error = @brew.errors.full_messages
             render :edit
         end
     end 
