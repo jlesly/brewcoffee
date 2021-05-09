@@ -6,7 +6,7 @@ class BrewsController < ApplicationController
     end 
 
     def create
-        @brew = current_user.brews.build(brew_params)
+        @brew = current_user.brews.create(brew_params)
         if @brew.save
             redirect_to brew_path(@brew)
         else
@@ -18,7 +18,7 @@ class BrewsController < ApplicationController
     end
 
     def show
-        @brews = Brew.find_by_id(params[:id])
+        @brew = Brew.find_by_id(params[:id])
     end 
 
     def update 

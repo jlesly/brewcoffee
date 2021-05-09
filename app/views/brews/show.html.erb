@@ -1,7 +1,7 @@
 <h1><%= @brew.name %></h1>
 <h2><%= @brew.brand %></h2>
 
-<%= link_to "Add a commnet", new_brew_comment_path(@brew) %>
+<%= link_to "Add a comment", new_brew_comment_path(@brew) %>
 
 <h2>Comments:</h2>
 <% @brew.comments.each do |comment| %>

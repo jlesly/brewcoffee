@@ -26,15 +26,12 @@ class CommentsController < ApplicationController
     end 
 
     def create
-        @brew = Brew.find(params[:comment][:brew_id])
-        @comment = current_user.comments.new(comment_params)
-
+        @comment = current_user.comments.build(comment_params)
         if @comment.save
-            redirect_to brew_comment_path(@brew, @comment)
+            redirect_to comment_path(@comment)
         else
-            @error = @comment.errors.full_messages
-            render :edit
-        end 
+            render :new
+        end
     end
 
     def edit

@@ -1,0 +1,6 @@
+Coffee Brew Entries 
+
+<% @brews.each do |b| %>
+ <%= link_to brew.name, brew_path(b.id) %>
+<%= link_to "Write a comment", new_brew_comment_path %>
+<% end %>
