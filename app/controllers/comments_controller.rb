@@ -1,9 +1,11 @@
 class CommentsController < ApplicationController
+    before_action :redirect_if_not_logged_in
+    
     def new
         if params[:brew_id] && @brew = Brew.find_by_id([:brew_id])
             @comment = @brew.comments.new
         else
-            # add error code after adding error code in layout
+            @error = "Comment does not exist" if params[:brew_id]
             @comment = Comment.new
         end
     end  
@@ -13,6 +15,14 @@ class CommentsController < ApplicationController
     end 
 
     def index
+        if params[:brew_id] && @brew = Brew.find_by_id(params[:brew_id])
+            @comments = @brew.comments
+        elsif current_user
+            @comments = current_user.comments.all
+        else
+            @error = "Coffee brew entry does not exist" if params [:brew_id]
+            @comments = Comment.all
+        end
     end 
 
     def create
@@ -22,7 +32,7 @@ class CommentsController < ApplicationController
         if @comment.save
             redirect_to brew_comment_path(@brew, @comment)
         else
-            # add error code after adding error code in layout
+            @error = @comment.errors.full_messages
             render :edit
         end 
     end
@@ -32,6 +42,14 @@ class CommentsController < ApplicationController
     end 
 
     def update
+        @comment = current_user.comments.find(params[:id])
+
+        if @comment.update(comment_params)
+            redirect_to comment_path(@comment)
+        else
+            @error = @comment.errors.full_messages
+            render :edit
+        end
     end
 
     def destroy
@@ -40,7 +58,7 @@ class CommentsController < ApplicationController
             flash[:success] = "Comment successfully deleted"
             redirect_to brews_path
         else
-            # add error code after adding error code in layout
+            @error = @comment.errors.full_messages
             render :edit
         end
     end 
