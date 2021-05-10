@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
     before_action :redirect_if_not_logged_in
     
     def new
-        if params[:brew_id] && @brew = Brew.find_by_id([:brew_id])
+        if params[:brew_id] && @brew = Brew.find_by_id(params[:brew_id])
             @comment = @brew.comments.new
         else
             @error = "Comment does not exist" if params[:brew_id]
@@ -26,16 +26,19 @@ class CommentsController < ApplicationController
     end 
 
     def create
-        @comment = current_user.comments.build(comment_params)
+        @brew = Brew.find(params[:comment][:brew_id])
+        @comment = current_user.comments.new(comment_params)
+        
         if @comment.save
-            redirect_to comment_path(@comment)
+            redirect_to brew_comment_path(@brew, @comment)
         else
+            @error = @comment.errors.full_messages
             render :new
         end
     end
 
     def edit
-        @comment = Comment.find(params[:id])
+        @comment = Comment.find_by_id(params[:id])
     end 
 
     def update
