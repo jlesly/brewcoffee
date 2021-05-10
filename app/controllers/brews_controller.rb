@@ -3,6 +3,7 @@ class BrewsController < ApplicationController
 
     def new 
         @brew = Brew.new
+        @brew.build_equipment
     end 
 
     def create
@@ -10,6 +11,7 @@ class BrewsController < ApplicationController
         if @brew.save
             redirect_to brew_path(@brew)
         else
+            @brew.build_equipment
             render :new
         end 
     end
@@ -33,6 +35,9 @@ class BrewsController < ApplicationController
         end
     end 
 
+    def edit 
+    end 
+    
     private
 
     def brew_params
