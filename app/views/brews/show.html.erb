@@ -4,9 +4,9 @@
 <h2>Brew Dose: <%= @brew.dose %>
 <h2>Extraction Volume: <%= @brew.extraction_volume %>
 <h2>Extraction Time: <%= @brew.extraction_time %>
-
+<br>
 <%= link_to "Add a comment", new_brew_comment_path(@brew) %>
-
+<br>
 <h2>Comments:</h2>
 <% @brew.comments.each do |comment| %>
     <ul>

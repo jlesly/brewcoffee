@@ -6,7 +6,7 @@ class BrewsController < ApplicationController
     end 
 
     def create
-        @brew = current_user.brews.create(brew_params)
+        @brew = current_user.brews.build(brew_params)
         if @brew.save
             redirect_to brew_path(@brew)
         else
@@ -15,6 +15,7 @@ class BrewsController < ApplicationController
     end
     
     def index
+        @brews = Brew.alpha.all
     end
 
     def show
@@ -22,9 +23,9 @@ class BrewsController < ApplicationController
     end 
 
     def update 
-        @brews = current_user.brews.find(params[:id])
+        @brew = current_user.brews.find(params[:id])
 
-        if @brews.update(brew_params)
+        if @brew.update(brew_params)
             redirect_to brew_path(@brew)
         else
            @error = @brew.errors.full_messages
@@ -35,7 +36,7 @@ class BrewsController < ApplicationController
     private
 
     def brew_params
-        params.require(:brew).permit(:name, :brand, :grind_size, :dose, :extraction_volume, :extraction_time)
+        params.require(:brew).permit(:name, :brand, :grind_size, :dose, :extraction_volume, :extraction_time, :user_id)
     end 
 
 end

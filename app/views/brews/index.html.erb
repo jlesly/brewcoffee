@@ -1,6 +1,5 @@
-Coffee Brew Entries 
+<h1>Coffee Brew Entries</h1>
 
-<% @brews.each do |b| %>
- <%= link_to brew.name, brew_path(brew.id) %>
-<%= link_to "Write a comment", new_brew_comment_path %>
+<% @brews.each do |brew| %>
+ <%= link_to brew.name, brew_path(brew) %>
 <% end %>
