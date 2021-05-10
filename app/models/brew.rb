@@ -8,5 +8,12 @@ class Brew < ApplicationRecord
 
     def self.alpha
         order(:name)
-    end 
+    end     
+
+    def equipment_attributes=(attributes)
+        self.equipment = Equipment.find_or_create_by(attributes) if !attributes['brand'].empty?
+        self.equipment
+    end
+
+    
 end

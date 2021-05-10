@@ -37,11 +37,11 @@ class BrewsController < ApplicationController
 
     def edit 
     end 
-    
+
     private
 
     def brew_params
-        params.require(:brew).permit(:name, :brand, :grind_size, :dose, :extraction_volume, :extraction_time, :user_id)
+        params.require(:brew).permit(:brew_id, :name, :brand, :grind_size, :dose, :extraction_volume, :extraction_time, :user_id)
     end 
 
 end

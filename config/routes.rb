@@ -7,13 +7,17 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
   delete '/logout' => 'sessions#destroy'
 
-  resources :equipment
-  resources :comments
+  
+  resources :users do 
+    resources :brews
+  end 
   resources :brews do 
     resources :comments
   end 
 
-  resources :users, only: [:show]
+  resources :equipment
+  resources :comments
+  
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
