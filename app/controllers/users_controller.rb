@@ -6,15 +6,15 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-
         if @user.save
-            session[:user_id] = @user.id
-            redirect_to user_path(@user)
+            session[:user_id] = @user.id 
+            redirect_to @user
         else
-            render :new
+            @error = @user.errors.full_messages.to_sentence
+            ender :new
         end
-    end 
-    
+    end
+
     def index
         @user = User.find_by_id(params[:id])
     end 

@@ -1,4 +1,5 @@
 class Brew < ApplicationRecord
+    belongs_to :equipment
     belongs_to :user
     has_many :comments
     has_many :users_commented, through: :comments, source: :user

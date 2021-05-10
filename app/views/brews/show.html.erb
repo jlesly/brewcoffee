@@ -10,7 +10,7 @@
 <h2>Comments:</h2>
 <% @brew.comments.each do |comment| %>
     <ul>
-        <li> Username: <%= comment.user.user_name %> Comment:<%= comment.content %></li>
+        <li> Username: <%= comment.user.username %> -- Comment:<%= comment.content %></li>
     </ul>
 <% end %>
 
