@@ -1,0 +1,7 @@
+<h1>Equipment</h1>
+
+<ol>
+    <% @equipment.each do |equipment| %>
+    <li><%= equipment.brand %><li> -- <%= equipment.model %>
+<% end %>
+</ol>

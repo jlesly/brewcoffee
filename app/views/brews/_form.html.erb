@@ -32,5 +32,21 @@
     <%= f.number_field :extraction_volume%>
     </div>
     <br>
+    <div>
+    <h4>Select the equipment used to brew this coffee:</h4>
+    <div>
+    <%= f.collection_select :equipment_id, Equipment.all, :id, :brand, :model, include_blank: 'Select equipment' %>
+    </div>
+    <div>
+    <h4>If the equipment you used is not listed above, create it here:</h4>
+    <%= f.fields_for :equipment do |e| %>
+        <%= e.label :brand %>
+        <%= e.text_field :brand %>
+
+        <%= e.label :model %>
+        <%= e.text_field :model %>
+    </div>
+    
+    <% end %>
     <%= f.submit %>
 <% end %>
