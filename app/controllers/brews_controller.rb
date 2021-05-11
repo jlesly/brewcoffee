@@ -8,8 +8,7 @@ class BrewsController < ApplicationController
 
     def create
         @brew = Brew.new(brew_params)
-        @brew.user_id = session[:user_id]
-   
+        
        if @brew.save 
          redirect_to brew_path(@brew)
        else
@@ -43,7 +42,7 @@ class BrewsController < ApplicationController
     private
 
     def brew_params
-        params.require(:brew).permit(:brew_id, :name, :brand, :grind_size, :dose, :extraction_volume, :extraction_time, :user_id, equipment_attributes: [:brand_model])
+        params.require(:brew).permit(:name, :brand, :grind_size, :dose, :extraction_volume, :extraction_time, :equipment_id, equipment_attributes: [:brand_model])
     end 
 
 end
