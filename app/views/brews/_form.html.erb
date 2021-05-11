@@ -35,19 +35,13 @@
     <div>
     <h4>Select the equipment used to brew this coffee:</h4>
     <p>
-    <%= f.collection_select(:equipment_id, Equipment.all, :id, :brand, {:prompt => 'Select brand'}) %>
-    </p>
-    <p>
-    <%= f.collection_select(:equipment_id, Equipment.all, :id, :model, {:prompt => 'Select model'}) %>
+    <%= f.collection_select(:equipment_id, Equipment.all, :id, :brand_model, {:prompt => 'Select equipment'}) %>
     </p>
     <div>
     <h4>If the equipment you used is not listed above, create it here:</h4>
     <%= f.fields_for :equipment do |e| %>
-        <%= e.label :brand %>
-        <%= e.text_field :brand %>
-
-        <%= e.label :model %>
-        <%= e.text_field :model %>
+        <%= e.label :brand_model %>
+        <%= e.text_field :brand_model %>
     </div>
     
     <% end %>

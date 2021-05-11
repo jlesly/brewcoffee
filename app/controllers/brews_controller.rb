@@ -7,14 +7,16 @@ class BrewsController < ApplicationController
     end 
 
     def create
-        @brew = current_user.brews.build(brew_params)
-        if @brew.save
-            redirect_to brew_path(@brew)
-        else
-            @brew.build_equipment
-            render :new
-        end 
-    end
+        @brew = Brew.new(brew_params)
+        @brew.user_id = session[:user_id]
+   
+       if @brew.save 
+         redirect_to brew_path(@brew)
+       else
+         @brew.build_equipment
+         render :new
+       end
+     end
     
     def index
         @brews = Brew.alpha.all
@@ -41,7 +43,7 @@ class BrewsController < ApplicationController
     private
 
     def brew_params
-        params.require(:brew).permit(:brew_id, :name, :brand, :grind_size, :dose, :extraction_volume, :extraction_time, :user_id)
+        params.require(:brew).permit(:brew_id, :name, :brand, :grind_size, :dose, :extraction_volume, :extraction_time, :user_id, equipment_attributes: [:brand_model])
     end 
 
 end
