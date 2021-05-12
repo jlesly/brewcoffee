@@ -7,7 +7,7 @@ class BrewsController < ApplicationController
     end 
 
     def create
-        @brew = Brew.new(brew_params)
+        @brew = current_user.brews.build(brew_params)
         
        if @brew.save 
          redirect_to brew_path(@brew)
