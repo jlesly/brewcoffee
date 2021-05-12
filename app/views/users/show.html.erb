@@ -1,8 +1,7 @@
 <h1> Welcome <%= @user.username %>!</h1>
-<div>
-<>
-<%= link_to "Coffee Brews", brews_path, method: 'get' %>
-</div>
-<div>
-<%= link_to "Add new entry of brewed coffee", new_brew_path %>
-</div>
+<p>
+<%= link_to "See all Coffee Brews", brews_path, method: 'get' %>
+</p>
+<p>
+<%= link_to "Add a new coffee brew entry", new_brew_path %>
+</p>
