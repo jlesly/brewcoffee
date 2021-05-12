@@ -5,19 +5,17 @@
 <h2>Extraction Volume: <%= @brew.extraction_volume %>
 <h2>Extraction Time: <%= @brew.extraction_time %>
 
+
+<h2>Equipment Used:</h2>
+<li> <%= @brew.equipment.brand_model %></li>
+<p>
 <br>
 <%= link_to "Add a comment", new_brew_comment_path(@brew) %>
 <br>
-
-<h2>Equipment used:</h2>
-<% @brew.equipment do |equipment| %>
-<li> <%= brew.equipment.brand_model %></li>
-<% end %>
-<p>
 <h2>Comments:</h2>
 <% @brew.comments.each do |comment| %>
-    <ul>
-        <li> Username: <%= comment.user.username %> -- Comment:<%= comment.content %></li>
-    </ul>
+<ul>
+    <li> Username: <%= comment.user.username %> -- Comment: <%= comment.content %></li>
+</ul>
 <p> 
 <% end %>
