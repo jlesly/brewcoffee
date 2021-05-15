@@ -57,6 +57,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'jquery-rails'
 
-gem 'omniauth'
+gem 'omniauth', '>= 1.9.1'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
+gem 'omniauth-rails_csrf_protection'

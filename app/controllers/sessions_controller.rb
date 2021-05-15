@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    
+
     def welcome
         @user = User.find_by_id(params[:id])
     end 
@@ -19,4 +19,17 @@ class SessionsController < ApplicationController
         session.delete :user_id
         redirect_to '/'
     end 
+
+    def omniauth
+        @user = User.from_omniauth(auth)
+        @user.save
+        session[:user_id] = @user.id
+        redirect_to '/'
+    end
+      
+    private
+      
+    def auth
+        request.env['omniauth.auth']
+    end
 end
