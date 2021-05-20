@@ -30,9 +30,11 @@
 
 - You must include at least one class level ActiveRecord scope method. a. Your scope method must be chainable, meaning that you must use ActiveRecord Query methods within it (such as .where and .order) rather than native ruby methods (such as #find_all or #sort).
 
-• Your application must provide standard user authentication, including signup, login, logout, and passwords.
+[X] Your application must provide standard user authentication, including signup, login, logout, and passwords.
+    Application allows user to signup, login, logout. Application uses bcrypt to create a secure password. 
 
-• Your authentication system must also allow login from some other service. Facebook, Twitter, Foursquare, Github, etc...
+[X] Your authentication system must also allow login from some other service. Facebook, Twitter, Foursquare, Github, etc...
+    Application allows user to log in using Google. 
 
 • You must include and make use of a nested resource with the appropriate RESTful URLs.
 
