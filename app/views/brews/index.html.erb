@@ -1,5 +1,5 @@
 <h1>Coffee Brew Entries</h1>
 
-<% @brews.each do |brew| %>
- <%= link_to brew.name, brew_path(brew) %>
+<p><% @brews.each do |brew| %>
+ <%= link_to brew.name, brew_path(brew) %></p>
 <% end %>
