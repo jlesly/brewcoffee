@@ -7,6 +7,7 @@
     has_many :brews
     has_many :comments
     has_many :brew_comments, through: :brews, source: :comments
+    
     Brew
     belongs_to :user 
     has_many :commnets
@@ -15,6 +16,9 @@
     Comment
     belongs_to :user
     belongs_to :brew
+
+    Eqipment 
+    has_many :brews
 
 [X] Include a many-to-many relationship implemented with has_many :through associations. The join table must include a user-submittable attribute — that is to say, some attribute other than its foreign keys that can be submitted by the app's user
     Attribute submitted by user-> comment content
