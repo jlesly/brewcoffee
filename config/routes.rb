@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
 
   
-  get '/auth/:provider/callback' => 'sessions#create'
+  get '/auth/:provider/callback' => 'sessions#omniauth'
   
   get 'auth/failure', to: redirect('/')
 
