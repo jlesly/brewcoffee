@@ -1,5 +1,63 @@
-<h1>Coffee Brew Entries</h1>
+<!DOCTYPE html>
+<html>
+<title>Coffee Brew Entries</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
 
-<p><% @brews.each do |brew| %>
- <%= link_to brew.name, brew_path(brew) %></p>
-<% end %>
+<div class="w3-container">
+  <h2>Coffee Brew Entries</h2>
+  <p>Search for an espresso name in the field below</p>
+  <input class="w3-input w3-border w3-padding" type="text" placeholder="Search for names.." id="myInput" onkeyup="myFunction()">
+
+  <p>
+  <table class="w3-table-all" id="myTable"
+    <tr>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>Grind Size</th>
+        <th>Dose (grams)</th>
+        <th>Extraction Volume (grams)</th>
+        <th>Extraction Time(seconds)</th>
+        <th>Equipment</th>
+    </tr>
+    <% @brews.each do |brew| %>
+    <tr>
+        <td><a href="/brews/<%= brew.id %>"><%= brew.name %></a></td>
+        <td><%= brew.brand %></td>
+        <td><%= brew.grind_size %></td>
+        <td><%= brew.dose %></td>
+        <td><%= brew.extraction_volume %></td>
+        <td><%= brew.extraction_time %></td>
+        <td><%= brew.equipment.brand_model %>
+    </tr>
+    <% end %>
+    </table>
+
+</div>
+
+<div class="w3-container">
+<p><button class="w3-button w3-teal"><a href="/brews/new">New Entry</a></button><p>
+</div>
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+
