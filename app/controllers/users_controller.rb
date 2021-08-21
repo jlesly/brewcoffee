@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
     def index
         @user = User.find_by_id(params[:id])
+        @user = User.new
     end 
 
     def show
@@ -25,14 +26,6 @@ class UsersController < ApplicationController
         redirect_to '/' if !@user
     end 
 
-    def self.from_omniauth(auth)
-        where(email: auth.info.email).first_or_initialize do |user|
-          user.username = auth.info.name
-          user.email = auth.info.email
-          user.password = SecureRandom.hex
-        end
-    end
-    
     private
 
     def user_params

@@ -1,5 +1,6 @@
 class BrewsController < ApplicationController
     before_action :redirect_if_not_logged_in
+    before_action :set_brew, only:[:show, :edit, :update]
 
     def new 
         @brew = Brew.new
@@ -43,6 +44,11 @@ class BrewsController < ApplicationController
 
     def brew_params
         params.require(:brew).permit(:name, :brand, :grind_size, :dose, :extraction_volume, :extraction_time, :equipment_id, equipment_attributes: [:brand_model])
+    end 
+
+    def set_brew
+        @brew = Brew.find_by_id(params[:id])
+        redirect_to brews_path if !@brew
     end 
 
 end

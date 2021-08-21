@@ -1,9 +1,38 @@
-<h1>Welcome!</h1>
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<body>
+<style>
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+body {
+  background-image: url(/assets/espresso.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+</style>
+</body>
+<body>
 
-<p>
-<%= link_to "Login", login_path %>
-Or 
-<%= link_to "Signup", signup_path %>
-Or
-<%= link_to "Log In with Google", '/auth/google_oauth2' , method: :post %>
-</p>
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-brown">
+  <div class="w3-display-topmiddle">
+    <h1 class="w3-jumbo w-3-animate-top">COFFEE BEANS</h1>
+    <hr class="w3-border-grey" style="margin:auto;width:50%">
+    
+    <div class="w3-panel w3-border w3-hover-opacity w3-hover-teal w3-padding">
+      <p class="w3-medium w3-center"><a href="/login">Log In</a>
+    </div>
+    <div class="w3-panel w3-border w3-hover-opacity w3-hover-teal w3-padding">
+      <p class="w3-medium w3-center"><a href="/signup">Sign Up</a>
+    </div>
+  </div>
+</div>
+
+<%= yield %>
+</body>
+
+</html>

@@ -7,11 +7,11 @@ class SessionsController < ApplicationController
     def create
         @user = User.find_or_create_by(username: params[:user][:username])
         if @user && @user.authenticate(params[:user][:password])
-            session[:user_id] = @user.id 
-            redirect_to user_path(@user)
+          session[:user_id] = @user.id
+          redirect_to user_path(@user)
         else
-            flash[:message] = "Login failed. Please try again or sign up!"
-            redirect_to login_path
+          flash[:error] = "Login failed. Please try again or sign up!"
+          redirect_to '/login'
         end
     end 
     
@@ -24,9 +24,9 @@ class SessionsController < ApplicationController
         @user = User.from_omniauth(auth)
         @user.save
         session[:user_id] = @user.id
-        redirect_to '/'
+        redirect_to user_path(@user)
     end
-      
+
     private
       
     def auth

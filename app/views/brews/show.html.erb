@@ -1,3 +1,4 @@
+<h3>Created: <%= @brew.created_at %></h3>
 <h1>Name: <%= @brew.name %></h1>
 <h2>Brand: <%= @brew.brand %></h2>
 <h2>Grind Size: <%= @brew.grind_size %>
@@ -8,7 +9,7 @@
 
 <h2>Equipment Used:</h2>
 <li> <%= @brew.equipment.brand_model %></li>
-<p>
+<p><%= link_to "Edit Entry", edit_brew_path(@brew) if @brew.user == current_user %></p>
 <br>
 <%= link_to "Add a comment", new_brew_comment_path(@brew) %>
 <br>
